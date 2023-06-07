@@ -37,13 +37,64 @@ for (c of children) {
 // console.log(boldAnchor.innerText) // "another link"
 
 
-var content = document.getElementById("content");
-var items = content.querySelectorAll("li");
 
-for (var i = 0; i < items.length; i++){
-    items[i].addEventListener("click", editItem);
+// for (var i = 0; i < items.length; i++){
+//     items[i].addEventListener("click", editItem);
+// }
+
+// function editItem() {
+//     console.log(this);
+// }
+
+
+//Add a title attribute to every element that has the important class
+// const importantElements = document.querySelectorAll('.important');
+var elements = document.getElementsByClassName('important');
+
+// Loop through each element and add the title attribute
+for (var i = 0; i < elements.length; i++) {
+  elements[i].setAttribute('title', 'This element is important');
 }
 
-function editItem() {
-    console.log(this);
+
+// Select all the img tags and loop through them. If they have no important class
+const imgs = document.querySelectorAll('img');
+for (const img of imgs) {
+
+  if (!img.classList.contains('important')) {
+    img.style.display = 'none';
+  }
 }
+
+//Loop through all the paragraphs and display their content in the console
+const paragraphs = document.querySelectorAll('p');
+
+for (const paragraph of paragraphs) {
+  const content = paragraph.textContent;
+
+  if (paragraph.classList.contains('important')) {
+    console.log(`${content} (${paragraph.classList.join(' ')})`);
+  } else {
+    console.log(content);
+  }
+}
+
+
+
+
+//Give each of the paragraph a random text color
+const paragraphs2 = document.querySelectorAll('p');
+for (const paragraph of paragraphs2) {
+  if (!paragraph.classList.contains('important')) {
+    paragraph.style.color = getRandomColor();
+  }
+}
+
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
